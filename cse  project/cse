@@ -1,0 +1,108 @@
+import math
+def show_menu():
+    print("\nthe legend scientific calculator ")
+    print("\n this calculator is for student who know how to use this not for dumb one who don't know how to use this valuable gadget")
+    print("1.  Addition (+)")
+    print("2.  Subtraction (-)")
+    print("3.  Multiplication (*)")
+    print("4.  Division (/)")
+    print("5.  Power (x^y)")
+    print("6.  Square Root (√x)")
+    print("7.  Sine (sin)")
+    print("8.  Cosine (cos)")
+    print("9.  Tangent (tan)")
+    print("10. Natural Log (ln)")
+    print("11. Log Base 10 (log10)")
+    print("12. Factorial (x!)")
+    print("0.  Exit")
+def get_number(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
+def calculator():
+    while True:
+        show_menu()
+        choice = input("\nChoose an operation (0-12): ").strip()
+
+        if choice == "0":
+            print("Goodbye!")
+            break
+
+        if choice in ["1", "2", "3", "4", "5"]:
+            num1 = get_number("Enter first number: ")
+            num2 = get_number("Enter second number: ")
+
+            if choice == "1":
+                print("ohh you dumb don't know addition")
+                result = num1 + num2
+            elif choice == "2":
+                print("you really use scientific calculator for that substraction purpose")
+                result = num1 - num2
+            elif choice == "3":
+                print("come to my home i taught you some basic multiplication ")
+                result = num1 * num2
+            elif choice == "4":
+                print("devision is quite tough as compare to multiplication but still you dumb ")
+                if num2 == 0:
+                    print("Error: Cannot divide by zero!")
+                    continue
+                result = num1 / num2
+            elif choice == "5":
+                print("btw to finding Power (x^y) is little quite tough  but btw you are still dumb  ")
+                result = math.pow(num1, num2)
+            print(f"Result: {result}")
+        elif choice in ["6", "7", "8", "9", "10", "11", "12"]:
+            num = get_number("Enter number: ")
+
+            if choice == "6":
+                if num < 0:
+                    print(
+                        "Error: Cannot calculate square root of a negative"
+                        " number!"
+                    )
+                    continue
+                result = math.sqrt(num)
+            elif choice in ["7", "8", "9"]:
+                unit = (
+                    input("Is the input in (D)egrees or (R)adians? ")
+                    .strip()
+                    .lower()
+                )
+                angle = math.radians(num) if unit.startswith("d") else num
+                if choice == "7":
+                    print("seriously you don't study trigo in 10th or 12th standerd why you dropping your standerd like that by using scientific calculator")
+                    result = math.sin(angle)
+                elif choice == "8":
+                    result = math.cos(angle)
+                    print("seriously you don't study trigo in 10th or 12th standerd why you dropping your standerd like that by using scientific calculator")
+                elif choice == "9":
+                    print("seriously you don't study trigo in 10th or 12th standerd why you dropping your standerd like that by using scientific calculator")
+                    result = math.tan(angle)
+            elif choice == "10":
+                if num <= 0:
+                    print(
+                        "Error: Logarithm undefined for zero or negative"
+                        " numbers!"
+                    )
+                    continue
+                result = math.log(num)
+            elif choice == "11":
+                if num <= 0:
+                    print(
+                        "Error: Logarithm undefined for zero or negative"
+                        " numbers!"
+                    )
+                    continue
+                result = math.log10(num)
+            elif choice == "12":
+                if num < 0 or not num.is_integer():
+                    print("Error: Factorial requires a non-negative integer!")
+                    continue
+                result = math.factorial(int(num))
+            print(f"Result: {result}")
+        else:
+            print("Invalid choice! Please select a valid option from the menu.")
+if __name__ == "__main__":
+    calculator()
